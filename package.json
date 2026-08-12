@@ -9,24 +9,29 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "biome check .",
+    "lint": "oxlint --config=.oxlintrc.json .",
     "test": "vitest run --passWithNoTests",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d dist",
+    "lint:fix": "oxfmt --ignore-path=.oxfmtignore . && oxlint --config=.oxlintrc.json --fix .",
+    "format": "oxfmt --ignore-path=.oxfmtignore .",
+    "format:check": "oxfmt --ignore-path=.oxfmtignore --check ."
   },
   "dependencies": {
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.6",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
     "gh-pages": "^6.3.0",
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0",
     "typescript": "^7.0.2",
     "vite": "^8.1.5",
     "vitest": "^4.1.10"
-  }
+  },
+  "packageManager": "pnpm@11.20.0"
 }
