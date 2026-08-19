@@ -13,16 +13,21 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v7
 
+    # pnpm ставится до setup-node: тот с cache: pnpm ищет уже существующий бинарь,
+    # чтобы вычислить путь к стору, и иначе падает «Unable to locate executable file: pnpm».
+    - uses: pnpm/action-setup@v6
+
     - name: Set up Node.js
       uses: actions/setup-node@v7
       with:
         node-version: '26.x'
+        cache: pnpm
 
     - name: Install dependencies
-      run: npm install
+      run: pnpm install --frozen-lockfile
 
     - name: Build
-      run: npm run build
+      run: pnpm run build
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
