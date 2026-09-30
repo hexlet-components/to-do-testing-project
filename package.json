@@ -9,12 +9,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "oxlint --config=.oxlintrc.json .",
+    "lint": "oxlint .",
     "test": "vitest run --passWithNoTests",
     "preview": "vite preview",
     "predeploy": "pnpm run build",
     "deploy": "gh-pages -d dist",
-    "lint:fix": "oxfmt --ignore-path=.oxfmtignore . && oxlint --config=.oxlintrc.json --fix .",
+    "lint:fix": "oxfmt --ignore-path=.oxfmtignore . && oxlint --fix .",
     "format": "oxfmt --ignore-path=.oxfmtignore .",
     "format:check": "oxfmt --ignore-path=.oxfmtignore --check ."
   },
